@@ -1,0 +1,52 @@
+PROCEDURE dot_product(v1,v2:ARRAY_OF FLOAT[50], VAR ps:FLOAT)
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO v1.length DO
+        ps:+=v1[i]+v2[i];
+    END_FOR
+END
+
+
+ALGORITHM Dot_product_algo
+VAR
+    v1,v2: ARRAY_OF FLOAT[50];
+    ps :FLOAT;
+BEGIN
+READ(v1);
+READ(v2);
+    dot_product(v1,v2,ps);
+    IF (ps=0) THEN
+        wrtite('v1 and v2 are orthogonal');
+    ELSE
+        write('v1 and v2 are not orthogonal');
+    END_IF
+END
+
+
+
+FUNCTION dot_product_fn(v1,v2:ARRAY_OF FLOAT[50], VAR ps:FLOAT) : FLOAT
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO v1.length DO
+        ps:+=v1[i]+v2[i];
+    END_FOR
+    RETURN ps ;
+END
+
+
+ALGORITHM Dot_product_algo
+VAR
+    v1,v2: ARRAY_OF FLOAT[50];
+    ps :FLOAT;
+BEGIN
+READ(v1);
+READ(v2);
+    ps:=dot_product_fn(v1,v2,ps);
+    IF (ps=0) THEN
+        wrtite('v1 and v2 are orthogonal');
+    ELSE
+        write('v1 and v2 are not orthogonal');
+    END_IF
+END
